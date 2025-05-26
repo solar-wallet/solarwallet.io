@@ -5,17 +5,29 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm-run-all --parallel build:*",
+    "build:pug": "node compile-pug.js",
+    "build:sass": "sass _styles:site/css --no-source-map",
+    "build:assets": "npm-run-all --parallel copy:*",
+    "copy:favicons": "copyfiles -u 1 \"_assets/favicons/**/*\" site",
+    "copy:img": "copyfiles -u 1 \"_assets/img/**/*\" site/img",
+    "copy:misc": "copyfiles -u 1 \"_misc/**/*\" site",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:pug": "chokidar \"_views/**/*.pug\" \"_includes/**/*.pug\" -c \"npm run build:pug\"",
+    "watch:sass": "chokidar \"_styles/**/*.scss\" -c \"npm run build:sass\"",
+    "watch:favicons": "chokidar \"_assets/favicons/**/*\" -c \"npm run copy:favicons\"",
+    "watch:img": "chokidar \"_assets/img/**/*\" -c \"npm run copy:img\"",
+    "watch:misc": "chokidar \"_misc/**/*\" -c \"npm run copy:misc\""
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-pug": "^4.0.1",
-    "gulp-watch": "^5.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0"
+    "sass": "^1.77.0",
+    "pug": "^3.0.3",
+    "copyfiles": "^2.4.1",
+    "npm-run-all": "^4.1.5",
+    "chokidar-cli": "^3.0.0"
   }
 }
