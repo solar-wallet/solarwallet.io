@@ -11,7 +11,7 @@
     "build:sass": "sass _styles:site/css --no-source-map",
     "build:assets": "npm-run-all --parallel copy:*",
     "copy:favicons": "copyfiles -u 1 \"_assets/favicons/**/*\" site",
-    "copy:img": "copyfiles -u 1 \"_assets/img/**/*\" site/img",
+    "copy:img": "copyfiles -u 1 \"_assets/img/**/*\" site",
     "copy:misc": "copyfiles -u 1 \"_misc/**/*\" site",
     "watch": "npm-run-all --parallel watch:*",
     "watch:pug": "chokidar \"_views/**/*.pug\" \"_includes/**/*.pug\" -c \"npm run build:pug\"",
