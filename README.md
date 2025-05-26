@@ -54,7 +54,3 @@ Key directories and files in the project:
 ## Deployment
 
 The `site` directory is intended for deployment. For example, if using Netlify, you would configure it to deploy from this directory.
-
-*(The previous README mentioned a `welcome-pug` branch for Netlify deployment. Please verify if this is still the case and update this section if necessary.)*
-
-
